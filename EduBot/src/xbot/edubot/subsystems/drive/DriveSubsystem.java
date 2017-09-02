@@ -17,12 +17,13 @@ public class DriveSubsystem {
 
 	public MockDistanceSensor distanceSensor;
 	public MockHeadingSensor gyro;
-	
+	//the Subsystem is responsible for a distance sensor, a heading sensor, and four motors
 	XSpeedController frontLeft;
 	XSpeedController frontRight;
 	XSpeedController rearLeft;
 	XSpeedController rearRight;
-		
+		b,jkjbkjbv
+	//
 	@Inject
 	public DriveSubsystem(WPIFactory factory) {
 		// instantiate speed controllers and sensors here, save them as class members
@@ -40,5 +41,8 @@ public class DriveSubsystem {
 		// an example, here is some code that has the frontLeft motor to spin according to
 		// the value of leftPower:
 		frontLeft.set(leftPower);
+		frontRight.set(rightPower);
+		rearLeft.set(leftPower);
+		rearRight.set(rightPower);
 	}
 }

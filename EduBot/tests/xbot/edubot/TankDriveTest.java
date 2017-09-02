@@ -12,6 +12,8 @@ public class TankDriveTest extends BaseDriveTest {
 	public void test() {
 		BaseCommand command = injector.getInstance(TankDriveWithJoysticksCommand.class);
 		
+
+			
 		// Call the TankDriveWithJoysticksCommand initialize once
 		command.initialize();
 		
@@ -19,6 +21,7 @@ public class TankDriveTest extends BaseDriveTest {
 		// so the motors should be at 0 power (stopped).
 		command.execute();
 		assertDrive(0, 0, "Expect Motors initially 0");
+		
 		
 		// Push the left and right joystick to fully forward (+1). This should make all motors go to +1,
 		// also knows as "full forward"
@@ -33,6 +36,6 @@ public class TankDriveTest extends BaseDriveTest {
 		right.setY(1.0);
 		command.execute();
 		assertDrive(-1.0,1.0, "Expect Motors are all forward when both joysticks are completely forward");
-		
+													
 	}
 }
