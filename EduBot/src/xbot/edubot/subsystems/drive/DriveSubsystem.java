@@ -22,7 +22,6 @@ public class DriveSubsystem {
 	XSpeedController frontRight;
 	XSpeedController rearLeft;
 	XSpeedController rearRight;
-		b,jkjbkjbv
 	//
 	@Inject
 	public DriveSubsystem(WPIFactory factory) {
