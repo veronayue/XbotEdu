@@ -45,12 +45,22 @@ public class TurnLeft90DegreesCommand extends BaseCommand {
 		}*/
 		
 		goalRotation=startDegree+90;
-		if (Math.abs(goalRotation)>180){
-			goalRotation=goalRotation-360;
+	
+		
+if (Math.abs(goalRotation)>360){
+			
+			goalRotation=goalRotation % 360;
 		}
 		
-			currentError=Math.abs(goalRotation-currentDegree);
-		
+			currentError=goalRotation-currentDegree;
+			
+			
+	if (currentError<-180){
+		currentError=360-currentError;
+	}
+	if(currentError>180){
+		currentError=currentError-360;
+	}	
 		
 		//velocity=drive.gyro.getYaw()-oldDegree;
 		errorVelocity=oldError-currentError;
@@ -59,8 +69,10 @@ public class TurnLeft90DegreesCommand extends BaseCommand {
 		/*if(Math.abs(power)>1){
 			power=1;
 		}*/
-		
+	
 		drive.tankDrive(-power, power);
+		
+		
 		/*if (currentError);
 		{
 			
@@ -70,6 +82,9 @@ public class TurnLeft90DegreesCommand extends BaseCommand {
 		currentDegree=drive.gyro.getYaw();
 	}
 
-
+	@Override
+	public boolean isFinished() {
+		return (Math.abs(currentError)<0.1 && Math.abs(errorVelocity)<0.1);	
+	}
 
 }
